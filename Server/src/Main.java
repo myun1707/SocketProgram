@@ -19,5 +19,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.err.println("Could not listen on port " + portNumber);
+        System.exit(-1);
     }
     }

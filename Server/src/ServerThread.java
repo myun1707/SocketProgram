@@ -15,10 +15,19 @@ public class ServerThread extends Thread{
 
     public void run(){
         try{
+            String inLine, outLine;
             PrintWriter out = new PrintWriter((socket.getOutputStream()), true);
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
             RequestProtocol rp = new RequestProtocol();
+
+            while((inLine = in.readLine()) != null){
+                outLine = inLine;
+                out.println(outLine);
+                if(outLine.equals("exit"))
+                    break;
+            }
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
