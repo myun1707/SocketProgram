@@ -22,7 +22,7 @@ public class ServerThread extends Thread{
             RequestProtocol rp = new RequestProtocol();
 
             while((inLine = in.readLine()) != null){
-                outLine = inLine;
+                outLine = RequestProtocol.processRequest(inLine);
                 out.println(outLine);
                 if(outLine.equals("exit"))
                     break;
